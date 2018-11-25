@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vulture-1.ogg-423711fbd4a03aca40b4488c53964190.oggstr"
+
+[deps]
+
+source_file="res://audio/vulture-1.ogg"
+dest_files=[ "res://.import/vulture-1.ogg-423711fbd4a03aca40b4488c53964190.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

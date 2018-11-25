@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/obstacles.gd" type="Script" id=1]
+[ext_resource path="res://sprite/world/ColumnSprite.png" type="Texture" id=2]
+[ext_resource path="res://scripts/score++.gd" type="Script" id=3]
+[ext_resource path="res://audio/sfx_point.ogg" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 40, 512 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1, 200 )
+
+[node name="obstacles" type="StaticBody2D"]
+
+position = Vector2( 512, 120 )
+scale = Vector2( 0.5, 0.5 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="top" type="Sprite" parent="." index="0"]
+
+position = Vector2( 0, -400 )
+rotation = 3.14159
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bottom" type="Sprite" parent="." index="1"]
+
+position = Vector2( 0, 850 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="shape_top" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( 0, -400 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="shape_bottom" type="CollisionShape2D" parent="." index="3"]
+
+position = Vector2( 0, 850 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="right" type="Position2D" parent="." index="4"]
+
+position = Vector2( 50, 200 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="." index="5"]
+
+position = Vector2( 1.32684, 197.699 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+position = Vector2( 0, 2.63519 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="point" type="AudioStreamPlayer2D" parent="Area2D" index="1"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Timer" type="Timer" parent="Area2D" index="2"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+
+[connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_Timer_timeout"]
+
+
