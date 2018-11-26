@@ -1,25 +1,25 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://stage/game_stage.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game_stage.gd" type="Script" id=1]
 [ext_resource path="res://audio/Hey Wait.ogg" type="AudioStream" id=2]
-[ext_resource path="res://stage/Music.gd" type="Script" id=3]
+[ext_resource path="res://scripts/Music.gd" type="Script" id=3]
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=4]
 [ext_resource path="res://scenes/spawner_ground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/spawner_obstacles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/bird.tscn" type="PackedScene" id=7]
-[ext_resource path="res://stage/texture_button.gd" type="Script" id=8]
+[ext_resource path="res://scripts/texture_button.gd" type="Script" id=8]
 [ext_resource path="res://sprite/UI/tapTick.png" type="Texture" id=9]
 [ext_resource path="res://sprite/UI/tapLeft.png" type="Texture" id=10]
 [ext_resource path="res://sprite/UI/tapRight.png" type="Texture" id=11]
-[ext_resource path="res://stage/flap.gd" type="Script" id=12]
+[ext_resource path="res://scripts/flap.gd" type="Script" id=12]
 [ext_resource path="res://fonts/LuckiestGuy.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://stage/Early Access.gd" type="Script" id=14]
-[ext_resource path="res://stage/Music_Button.gd" type="Script" id=15]
-[ext_resource path="res://stage/WingSound.gd" type="Script" id=16]
+[ext_resource path="res://scripts/Early Access.gd" type="Script" id=14]
+[ext_resource path="res://scripts/Music_Button.gd" type="Script" id=15]
+[ext_resource path="res://scripts/WingSound.gd" type="Script" id=16]
 [ext_resource path="res://scripts/Egg_count.gd" type="Script" id=17]
 [ext_resource path="res://pngs/egg.png" type="Texture" id=18]
 [ext_resource path="res://pngs/broken egg2.png" type="Texture" id=19]
-[ext_resource path="res://stage/Egg_UI.gd" type="Script" id=20]
+[ext_resource path="res://scripts/Egg_UI.gd" type="Script" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -413,9 +413,9 @@ curve = SubResource( 4 )
 
 [connection signal="state_changed" from="bird" to="spawner_obstacles" method="_on_bird_state_changed"]
 
-[connection signal="pressed" from="hud/flap" to="bird" method="_on_flap_pressed"]
-
 [connection signal="pressed" from="hud/flap" to="hud/flap" method="_on_flap_pressed"]
+
+[connection signal="pressed" from="hud/flap" to="bird" method="_on_flap_pressed"]
 
 [connection signal="timeout" from="hud/Early Access/Timer" to="hud/Early Access" method="_on_Timer_timeout"]
 
