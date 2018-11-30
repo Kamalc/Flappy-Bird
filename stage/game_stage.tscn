@@ -413,9 +413,9 @@ curve = SubResource( 4 )
 
 [connection signal="state_changed" from="bird" to="spawner_obstacles" method="_on_bird_state_changed"]
 
-[connection signal="pressed" from="hud/flap" to="hud/flap" method="_on_flap_pressed"]
-
 [connection signal="pressed" from="hud/flap" to="bird" method="_on_flap_pressed"]
+
+[connection signal="pressed" from="hud/flap" to="hud/flap" method="_on_flap_pressed"]
 
 [connection signal="timeout" from="hud/Early Access/Timer" to="hud/Early Access" method="_on_Timer_timeout"]
 
